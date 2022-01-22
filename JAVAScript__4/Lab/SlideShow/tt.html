@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Task -2- </title>
+<style>
+html 
+{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    padding-top: 60px ;
+}
+
+.container 
+{
+    margin: 25% auto;
+    text-align: center;
+}
+</style>
+
+</head>
+<body>
+    <img id="myImg" src="1.jpg" height="200px"><br>
+
+    <input type="button" value="Previous" onclick="previous()">
+    <input type="button" value="SlideShow" onclick="swapImages()">
+    <input type="button" value="Stop" onclick="stop()">
+    <input type="button" value="Next" onclick="next()">
+
+
+<script>
+
+var i = 0;
+var imgs = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"]
+function next() {
+    if (i < imgs.length - 1) {
+        i++;
+        document.getElementById("myImg").src = imgs[i];
+    }
+}
+
+function previous() {
+    if (i != 0) {
+        i--;
+        document.getElementById("myImg").src = imgs[i];
+    }
+}
+
+var timer;
+function swapImages() { 
+    clearInterval(timer);
+    next();
+    if (i == imgs.length - 1) {
+        i = 0;
+    }
+    timer = setTimeout(swapImages,1500); 
+}
+
+function stop() {clearTimeout(timer);}
+
+</script>
+</body>
+</html>

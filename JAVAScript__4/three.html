@@ -1,0 +1,55 @@
+<html>
+<head>
+
+    <style>
+        .center {
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        <div id="header">
+
+            <img id="img" src="back1.jpg" width="200" height="200" alt="hello..it rains over here:)" />
+        </div>
+        <div id="navigation">
+            <ul id="nav">
+                <li><strong>amoola</strong></li>
+                <li><a href="#">Articles</a></li>
+                <li><a href="#">Photos</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Clients</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <script>
+    document.getElementById("img").style.float = "right";
+    document.getElementById("nav").style.clear = "both";
+    document.getElementById("nav").style.listStylePosition = "inside";
+    document.getElementById("nav").style.listStyleType = "circle";
+
+    var newImg = document.createElement("img");
+    newImg.setAttribute("src","back1.jpg")
+    newImg.setAttribute("width","200px")
+    newImg.setAttribute("id","newImg" )
+
+    //document.getElementById("navigation").appendChild(newImg);
+    //document.getElementById("newImg").style.float = "left";
+    //document.getElementById("navigation").removeChild(newImg);
+
+
+    let parent = document.getElementsByClassName("center").parentNode;
+    parent.insertBefore(newImg, parent);
+    document.getElementById("navigation").insertBefore(newImg, parent);
+    
+    </script>
+</body>
+
+
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<input  id="textbox" onkeypress="memSort(event);" onmousedown="WhichButton(event)"/>
+
+<script>
+
+function memSort(e){
+    document.onkeydown = checkKeycode
+    function checkKeycode(e) {
+    var keycode;
+    if (window.event)
+        {keycode = window.event.keyCode;}
+    else if (e)
+        {keycode = e.which;}
+    alert("keycode: " + keycode);
+    }
+}
+
+function WhichButton(event) {
+    if (event.button==0){
+        alert("Left mouse button: " + event.button);
+    }
+    else{
+        alert("Right mouse button: " + event.button);
+    }
+}
+
+
+</script>
+</body>
+</html>

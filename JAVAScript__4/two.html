@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Task -2- </title>
+</head>
+
+<body>
+    <img id = "about1" src="back1.jpg" width="400" height="400"  onmouseover="MyFadeFunctionIn()" onmouseout="MyFadeFunctionOut()" > 
+    <img id = "about1" src="back2.jpg" width="400" height="400"  onmouseover="MyFadeFunctionI()" onmouseout="MyFadeFunctionOu()" > 
+    <img id = "about1" src="back3.jpg" width="400" height="400"  onmouseover="MyFadeFunctionI()" onmouseout="MyFadeFunctionOu()" > 
+
+<script>
+
+
+var opacity = 0;
+
+function MyFadeFunctionIn() {
+   if (opacity<=1) {
+      opacity += .1;
+      setTimeout(function(){MyFadeFunctionIn()},100);
+   }
+   document.getElementById('about1').style.opacity = opacity;
+}
+
+
+
+function MyFadeFunctionOut() {
+   if (opacity>=0.3) {
+      opacity -= .1;
+      setTimeout(function(){MyFadeFunctionOut()},100);
+   }
+   document.getElementById('about1').style.opacity = opacity;
+}
+
+
+
+
+function MyFadeFunctionI() {
+    event.target.style.transition = '0.8s';
+    event.target.style.opacity = 1;
+}
+
+function MyFadeFunctionOu() {
+  event.target.style.transition = '0.8s';
+  event.target.style.opacity = 0.3;
+}
+
+
+
+</script>
+</body>
+</html>

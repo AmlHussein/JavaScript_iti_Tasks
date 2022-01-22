@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+</style>
+</head>
+<body>
+
+<br><hr><br>
+
+<input type="text" placeholder="Enter User ID" onblur="getVal()">
+<button id="getUser" onclick="getUser()">Disply</button>
+<div id="UserData">
+</div>
+
+<button  onclick="getAllUsers()">Disply All Users</button>
+<div id="AllUsers">
+</div>
+
+<br><hr><br>
+
+
+<p>
+    <input type="button" 
+        style="margin:10px 0;" 
+            onclick="populateSelect()" 
+                value="Click to Populate Names" />
+</p>
+
+
+<select id="sel" onchange="show(this)">
+</select>
+
+<br><hr><br>
+<div id="showuser"></div>
+
+
+<script>
+
+var myArr = [];
+var ID ;
+function getVal() {
+    ID = document.querySelector('input').value;
+}
+function getUser(){
+    document.getElementById('UserData').innerHTML =
+        "<img src='"+myArr[ID].avatar+"'/>"+" "+
+        myArr[ID].first_name +" "+
+        myArr[ID].last_name +" "+
+        myArr[ID].email + "<hr>";
+}
+
+//**********get all users***************
+function getAllUsers(){
+    for (var i = 0; i < myArr.length; i++){
+    document.getElementById('AllUsers').innerHTML +=
+        "<img src='"+myArr[i].avatar+"'/>"+" "+
+        myArr[i].first_name +" "+
+        myArr[i].last_name +" "+
+        myArr[i].email + "<hr>";
+    }
+}
+
+//********** add names to dropdown **********
+function populateSelect() {
+
+        var ele = document.getElementById('sel');
+        for (var i = 0; i < myArr.length; i++) {
+            ele.innerHTML = ele.innerHTML +
+                '<option value="' + myArr[i]['id'] + '">' + myArr[i]['first_name'] + '</option>';
+        }
+    }
+
+    function show(ele) {
+
+        var msg = document.getElementById('msg');
+        document.getElementById('showuser').innerHTML =
+        "<img src='"+myArr[ele.selectedIndex].avatar+"'/>"+" "+
+        myArr[ele.selectedIndex].first_name +" "+
+        myArr[ele.selectedIndex].last_name +" "+
+        myArr[ele.selectedIndex].email + "<hr>";
+
+    }
+
+
+//******************************************
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var usersObj = JSON.parse(this.responseText);
+        myArr = usersObj.data;
+         console.log(usersObj.data[0].first_name)
+    }
+}
+
+xhttp.open('GET', 'https://reqres.in/api/users');
+xhttp.send();
+
+</script>
+</body>
+</html>

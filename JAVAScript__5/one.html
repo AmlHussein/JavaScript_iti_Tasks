@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Task -1- </title>
+
+</head>
+<body>
+    <p id="demo"></p>
+
+<script>
+
+const student = {
+    ID: 1,
+    name:"aml", 
+    age:30, 
+    Address:"cario",
+    skills:["painting", " writting", " reading"],
+    IsLeader: true
+}
+console.log(student);
+
+const obj = JSON.parse(JSON.stringify(student));
+document.getElementById("demo").innerHTML = 
+obj.ID + "<br>" + obj.name+ "<br>" + obj.age + "<br>" + obj.Address
++ "<br>" + obj.skills + "<br>" + obj.IsLeader;
+
+
+
+/*
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'https://jsonplaceholder.typicode.com/users');
+xhr.send();
+xhr.addEventListener("readystatechange", function(){
+
+if(xhr.readyState==4 && xhr.status==200){
+   // console.log(xhr.response);
+    var res = xhr.response;
+
+    var result = JSON.parse(res);
+
+    for(var i=0; i<result.length; i++)
+    {
+        console.log(result[i].name);
+        document.write("<h1>"+result[i].name+"</h1>");
+    }
+
+}
+})
+
+*/
+
+
+
+
+</script>
+</body>
+</html>
